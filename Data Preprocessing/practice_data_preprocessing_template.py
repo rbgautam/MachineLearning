@@ -11,4 +11,14 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
+#import the dataset
+dataset = pd.read_csv('data.csv')
 
+features = dataset.iloc[:,:-1].values
+#set np.set_printoptions(threshold =np.nan) to show all data in console
+
+output = dataset.iloc[:,3].values
+
+
+#Handling the missing data
+from sklearn.preprocessing import Imputer
