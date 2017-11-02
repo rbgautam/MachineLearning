@@ -22,3 +22,17 @@ output = dataset.iloc[:,3].values
 
 #Handling the missing data
 from sklearn.preprocessing import Imputer
+
+imputer = Imputer(missing_values = 'NaN', strategy='mean', axis=0)
+imputer = imputer.fit(features[:,1:3])
+features[:,1:3] = imputer.transform(features[:,1:3])
+
+#Handling categories for input
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+labelencoder_feature = LabelEncoder()
+features[:,0] = labelencoder_feature.fit_transform(features[:,0])
+onehotencoder = OneHotEncoder(categorical_features=[0])
+features = onehotencoder.fit_transform(features).toarray()
+#Handling categories for output
+labelencoder_output =  LabelEncoder()
+output = labelencoder_output.fit_transform(output)
