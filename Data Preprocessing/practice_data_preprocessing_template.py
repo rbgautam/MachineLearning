@@ -36,3 +36,9 @@ features = onehotencoder.fit_transform(features).toarray()
 #Handling categories for output
 labelencoder_output =  LabelEncoder()
 output = labelencoder_output.fit_transform(output)
+
+#Data splitting for Training and testing
+
+#from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
+X_train,Y_train,X_test,Y_test= train_test_split(features, output,test_size = 0.2, random_state = 0) 
