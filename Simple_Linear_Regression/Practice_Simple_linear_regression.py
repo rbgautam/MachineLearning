@@ -23,3 +23,21 @@ from sklearn.linear_model import LinearRegression
 regressor =  LinearRegression()
 regressor.fit(X_train,Y_train)
 
+#predict the Y
+y_pred = regressor.predict(X_test) 
+
+#Visualizing the training set results
+mplot.scatter(X_train , Y_train, color='red')
+mplot.plot(X_train, regressor.predict(X_train), color = 'blue')
+mplot.title('Salary vs Experience( Training Set)')
+mplot.xlabel('Experience in Years')
+mplot.ylabel('Salary')
+mplot.show()
+
+#Visualizing the Tst set result
+mplot.scatter(X_test, Y_test, color='Green')
+mplot.plot(X_test, y_pred)
+mplot.title('Test Data visulaization')
+mplot.xlabel('Experience in Years')
+mplot.ylabel('Salary')
+mplot.show()
