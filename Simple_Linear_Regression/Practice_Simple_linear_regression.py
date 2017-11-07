@@ -36,7 +36,7 @@ mplot.show()
 
 #Visualizing the Tst set result
 mplot.scatter(X_test, Y_test, color='Green')
-mplot.plot(X_test, y_pred)
+mplot.plot(X_train, regressor.predict(X_train), color = 'blue')
 mplot.title('Test Data visulaization')
 mplot.xlabel('Experience in Years')
 mplot.ylabel('Salary')
