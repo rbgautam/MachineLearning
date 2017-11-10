@@ -12,3 +12,7 @@ split = sample.split(sampledata$Profit,SplitRatio = 4/5)
 training_set = subset(sampledata , split==TRUE)
 test_set = subset(sampledata, split == FALSE)
 
+#regressor lm for multiple linear regression
+
+regressor = lm(formula = Profit ~ ., data = training_set)
+
