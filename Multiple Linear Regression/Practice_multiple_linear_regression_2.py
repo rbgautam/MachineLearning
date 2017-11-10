@@ -46,3 +46,35 @@ y_pred = regressor.predict(X_test)
 # mplot.ylabel('Profit Prediction') 
 #  
 # =============================================================================
+
+import statsmodels.formula.api as sm
+#Prepending the X values with Column on ones to account for the Missing constant X0= 1 
+X = np.append(arr = np.ones((50,1)).astype(int), values = X, axis =1)
+
+#Preparing data for OPtimal variables
+#Initailly include all the data features
+
+X_opt =  X[:,[0,1,2,3,4,5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+
+regressor_OLS.summary()
+
+
+X_opt =  X[:,[0,1,3,4,5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+
+X_opt =  X[:,[0,3,4,5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+
+X_opt =  X[:,[0,3,5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+
+#The following step porves that R&D exp. is the most important influencer of the prediction
+#Thsi methos use the Least square method 
+X_opt =  X[:,[0,3]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+
