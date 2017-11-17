@@ -44,14 +44,29 @@ X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.2, random_sta
 
 #Model Training 
 ###INMPOERTANT : DOD NOT USE lINEAR REGRESSION IN THIS PROBLEM AS ITS A CLASSIFICATION PROBLEM
-from sklearn.linear_model import LinearRegression
-regressor = LinearRegression()
-regressor.fit(X_train,y_train)
+#from sklearn.linear_model import LinearRegression
+#regressor = LinearRegression()
+#regressor.fit(X_train,y_train)
+#
+##Prediction validation
+#y_pred = regressor.predict(X_test)
 
-#Prediction validation
-y_pred = regressor.predict(X_test)
+
+#Model Training 
+from sklearn.naive_bayes import BernoulliNB
+classifier  = BernoulliNB()
+classifier.fit(X_train,y_train)
+
+##Prediction validation
+y_pred = classifier.predict(X_test)
+
 
 #Compare results
+equal_count = np.sum(y_pred== y_test)
+
+per_correct = np.divide(equal_count, len(y_test))
+
+print(per_correct)
 
 
 
